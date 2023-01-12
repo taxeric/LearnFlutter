@@ -1,0 +1,2 @@
+
+var loginState = false;
