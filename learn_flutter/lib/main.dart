@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => MyHomePage(title: 'Flutter'),
         "page1": (context) => MRoute(),
-        "paramsPage": (context) => ParamsRoute()
+        "paramsPage": (context) => ParamsRoute(),
+        "img": (context) => ImgPage(),
       },
     );
   }
@@ -74,6 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void _toImg(BuildContext context) {
+    Navigator.pushNamed(context, "img");
+  }
+
   void _changeLoginState(bool state) {
     loginState = state;
   }
@@ -102,10 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: (){ _changeLoginState(true); },
                   label: Text("login")
               ),
-              ElevatedButton.icon(
-                  icon: Icon(Icons.logout),
-                  onPressed: (){ _changeLoginState(false); },
-                  label: Text("logout")
+              Padding(
+                padding: EdgeInsets.only(left: 10),
+                child:
+                ElevatedButton.icon(
+                    icon: Icon(Icons.logout),
+                    onPressed: (){ _changeLoginState(false); },
+                    label: Text("logout")
+                ),
               ),
             ],
           ),
@@ -120,6 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               icon: Icon(Icons.send),
               label: Text("To params page")
+          ),
+          ElevatedButton.icon(
+              onPressed: () {
+                _toImg(context);
+              },
+              icon: Icon(Icons.send),
+              label: Text("To img page")
           ),
           Text.rich(
               TextSpan(
